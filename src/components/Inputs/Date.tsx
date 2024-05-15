@@ -41,7 +41,7 @@ const DateInput = (props: DateInputProps) => {
                 }
             )}
             onClick={async (e:any) => {
-                const inputElement = document.getElementById(props.id);
+                const inputElement:any = document.getElementById(props.id);
                  inputElement?.showPicker();
             }}
         />

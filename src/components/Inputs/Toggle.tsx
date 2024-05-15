@@ -2,7 +2,6 @@
 import React, {useContext} from 'react';
 import {css} from '@emotion/react';
 import { If,Then } from 'react-if';
-import { ActiveTheme } from '../context';
 export interface ToggleInputProps {
     id: string;
 }

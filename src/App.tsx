@@ -12,11 +12,8 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { useEffect, useState } from 'react';
 import { If, Then, Else } from 'react-if';
 import Clock from './pages/Clock';
-import { ThemeProvider } from '@emotion/react';
-import { Theme } from './main';
 import Modal from './components/Modal';
 import JournalEntry from './pages/JounalEntry';
-import FileInput from './components/Inputs/File';
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -43,7 +40,19 @@ function App() {
 
   const vcard = new VCARD([fn, cell, photo, email, hobby]);
   const [isFullscreen,setIsfullscreen]=useState<boolean>(document.fullscreenElement ===null?false:true);
-  const selectOptions: SelectOption[] = [{ display: 'cheese', value: 'Cheese' }, { display: 'bread', value: 'Bread' }, { display: 'beer', value: 'Beer' }];
+  const selectOptions: SelectOption[] = [{
+    display: 'cheese', value: 'Cheese',
+    isPlaceholder: false,
+    isSelected: false
+  }, {
+    display: 'bread', value: 'Bread',
+    isPlaceholder: false,
+    isSelected: false
+  }, {
+    display: 'beer', value: 'Beer',
+    isPlaceholder: false,
+    isSelected: false
+  }];
   const [selectValue, setSelectValue] = useState('');
   const deviceType = window.navigator.userAgent;
   const [cheese, setCheese] = useState('');

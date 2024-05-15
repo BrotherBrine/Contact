@@ -3,7 +3,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { If, Then } from 'react-if';
-import { ActiveTheme } from '../context';
 import { SelectOption } from './Input';
 import { inputStyle } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

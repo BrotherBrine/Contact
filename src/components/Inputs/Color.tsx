@@ -3,7 +3,6 @@
 import React, { useContext, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { If, Then } from 'react-if';
-import { ActiveTheme } from '../context';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deviceType } from 'react-device-detect';
@@ -71,8 +70,8 @@ const ColorInput = (props: ColorInputProps) => {
                         }
                     )}
                     onClick={async () => {
-                        const inputElement = document.getElementById(props.id);
-                        await inputElement?.showPicker();
+                        const inputElement:any = document.getElementById(props.id);
+                        await inputElement.showPicker();
                     }}
                 /><If condition={isIOS}>
                     <Then>
