@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://brotherbrine.github.io/contact",
+  "homepage": "./",
   "scripts": {
     "dev": "vite",
     "host": "vite --host",
