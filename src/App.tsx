@@ -73,6 +73,7 @@ function App() {
   const routes = window.location.pathname.split('/');
   const [numberVal, setNumberVal] = useState(0);
   const [file, setFile] = useState();
+  const [isChecked, setIsChecked]=useState(false);
   console.log('color', color);
   const handleNumValChange = (e: number) => {
     console.log('e', e);
@@ -145,6 +146,11 @@ function App() {
               <div css={css({ height: '500px' })}>
                 <QRCode id='QRCode' value={vcard.repr()}></QRCode>
               </div>
+              <Input id='toggle1' type='toggle' label="on or off?" value={isChecked} onClick={(e:any) => {
+                
+                setIsChecked(!isChecked);
+
+                }}/>
               <Input id='text1' type='text' label='cheese' placeholder='enter your cheese' value={cheese} onChange={inputChanged} />
               <Input id='number2' type='number' label='number input' pattern='\d*' value={numberVal} onChange={handleNumValChange} />
               <Input id='date3' type='date' placeholder='01/01/01' label='Birthdate' value={datepicker1} onChange={setDatepicker1} />
@@ -161,7 +167,6 @@ function App() {
               <Social id="social-email" url="mailto:zacharytstevenson@gmail.com" label='zacharytstevenson@gmail.com'>
                 <FontAwesomeIcon id='email-icon' icon={solid('envelope')} />
               </Social>
-              <Input id='toggle1' type='toggle'></Input>
               <Modal id={'5dd'} dismissModal={()=>{}}><div>hi im a modal</div></Modal>
             </div></Else>
             </If>
