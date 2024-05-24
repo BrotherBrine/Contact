@@ -109,7 +109,7 @@ const SelectInput = (props: SelectInputProps) => {
                 })}
             </select> */}
             </div>
-            <SelectPicker id={props.id + '-picker'} visible={showPicker} position={pickerPosition} closePicker={() => { console.log('dddd') }} />
+            <SelectPicker id={props.id + '-picker'} options={props.options} visible={showPicker} position={pickerPosition} closePicker={() => { console.log('dddd') }} />
         </div>
     );
 };
