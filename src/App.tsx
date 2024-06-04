@@ -9,7 +9,7 @@ import QRCode from 'react-qr-code';
 import { EmailProperty, FNProperty, HobbyProperty, LevelParameter, ParameterValueType, PhotoProperty, TelProperty, TextType, TypeParameter, URIType, VCARD } from 'vcard4';
 import Input from './components/Inputs/Input';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { If, Then, Else } from 'react-if';
 import Clock from './pages/Clock';
 import Modal from './components/Modal';
@@ -87,6 +87,10 @@ function App() {
     setNumberVal(e);
   }
 
+  const [switchSize,setSwitchSize]=useState(22);
+  const [switchBorderSize,setSwitchBorderSize]=useState(1);
+  const [switchWidth,setSwitchWidth]=useState(2);
+
   const handleFullScreen = () => {
     setIsfullscreen(document.fullscreenElement === null ? false : true);
   }
@@ -153,18 +157,21 @@ function App() {
                   <div css={css({ height: '500px' })}>
                     <QRCode id='QRCode' value={vcard.repr()}></QRCode>
                   </div>
-                  <Input id='toggle1' type='toggle' label="on or off?" value={isChecked} onClick={(e: any) => {
-
+                  <Input id='toggle1' type='toggle' label="on or off?" value={isChecked} onClick={(e: SyntheticEvent) => {
+                    console.log('e',e);
+                    console.log('type',typeof(e));
                     setIsChecked(!isChecked);
-
-                  }} />
+                  }} height={switchSize} borderSize={switchBorderSize} width={switchWidth}/>
+                  <Input id='number2' type='number' label='switch size' pattern='\d*' value={switchSize} onChange={setSwitchSize} />
+                  <Input id='number3' type='number' label='switch border' pattern='\d*' value={switchBorderSize} onChange={setSwitchBorderSize} />
+                  <Input id='number4' type='number' label='switch width' pattern='\d*' value={switchWidth} onChange={setSwitchWidth} />
                   <Input id='text1' type='text' label='cheese' placeholder='enter your cheese' value={cheese} onChange={setCheese} />
-                  <Input id='number2' type='number' label='number input' pattern='\d*' value={numberVal} onChange={handleNumValChange} />
                   <Input id='date3' type='date' placeholder='01/01/01' label='Birthdate' value={datepicker1} onChange={setDatepicker1} />
                   <Input id='password4' type='password' label='password' />
                   <Input id='email' type='email' label='email' value={emailAddr} onChange={setEmailAddr} />
                   <Input id='color' type='color' label='color' value={color} onChange={(v: string) => setColor(v)} />
                   <Input id='select' type='select' label='select' options={selectOptions} value={selectValue} onChange={setSelectValue} placeholder='select an option' />
+                  <Input id='select' type='select' label='select' options={selectOptions} value={selectValue} onChange={setSelectValue} placeholder='choose' />
                   <Input id='btton' type='button' value={isFullscreen ? 'EXIT FULL SCREEN' : 'FULL SCREEN'} onClick={() => { isFullscreen ? document.exitFullscreen() : document.documentElement.requestFullscreen() }} />
 
                   <Input id='testfile' type='file' value={file} onChange={setFile} />

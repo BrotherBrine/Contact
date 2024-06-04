@@ -31,8 +31,8 @@ export interface InputProps {
     min: number;
     max: number;
     minHeight: number | string;
-
-
+    height: number|string;
+    borderSize: number|string;
 }
 export interface SelectOption {
     display: any, value: string, isPlaceholder: boolean, isSelected: boolean,
@@ -86,7 +86,7 @@ const Input = (props: InputProps) => {
             case 'button':
                 return <ButtonInput {...props} />;
             case 'file':
-                    return <input css={fileInputStyle} {...props} size={199} />;
+                    return < FileInput {...props} />;
             case 'toggle': 
                 return <ToggleInput {...props}/>;
             default:
@@ -121,9 +121,12 @@ Input.defaultProps = {
     options: [],
     onChange: (e: any) => { console.log('e', e); },
     onClick: (e: any) => { console.log('e', e); },
-    value: null,
+    value: '',
     pattern: null,
     min: null,
     max: null,
     minHeight: null,
+    height:null,
+    width:null,
+    borderSize:null
 };
